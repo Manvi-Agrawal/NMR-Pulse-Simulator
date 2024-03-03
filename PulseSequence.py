@@ -26,6 +26,10 @@ class PulseSequence():
         self.reset()
         return op
 
+    @property
+    def name(self)-> str:
+        return self._name
+
     def add(self, pulse: Pulse)->PulseSequence:
         self._seq.append(pulse.name)
         # print("Pulse op...")
