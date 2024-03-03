@@ -71,29 +71,6 @@ class Algorithm():
 
     
     def execute_algorithm(self):
-        # fig = plt.figure(figsize=(9, 9))
-        # # grid for pairs of subplots
-        # grid = plt.GridSpec(2, 1)
-
-        # h_plot = fig.add_subplot(grid[0])
-        # # '\n' is important
-        # h_plot.set_title(f'Hydrogen\n', fontweight='semibold', size=14)
-        # h_plot.set_axis_off()
-
-        # gs_h = gridspec.GridSpecFromSubplotSpec(1, 3, subplot_spec=grid[0])
-
-        # # real subplot #1
-        # ax = fig.add_subplot(gs_h[0])
-        # ax.set_title(f'P0-1H')
-
-        # # real subplot #2
-        # ax = fig.add_subplot(gs_h[1], sharey=ax)
-        # ax.set_title(f'P1-1H')
-        
-        # # real subplot #3
-        # ax = fig.add_subplot(gs_h[2], sharey=ax)
-        # ax.set_title(f'P2-1H')
-
         self._p0.print_sequence()
         print("\n")
         self._p1.print_sequence()
