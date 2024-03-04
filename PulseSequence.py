@@ -8,10 +8,6 @@ from Operator import Operator
 
 class PulseSequence():
     def __init__(self, name) -> None:
-        """
-        A fresh builder instance should contain a blank product object, which is
-        used in further assembly.
-        """
         self.reset()
         self._name = name
 
