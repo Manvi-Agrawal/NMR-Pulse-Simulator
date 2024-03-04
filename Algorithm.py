@@ -89,9 +89,6 @@ class Algorithm():
 
 
         elif state=="11":
-            self._p0 = self._p0
-            self._p1 = self._p0
-            self._p2 = self._p0
             return self
 
         else:
