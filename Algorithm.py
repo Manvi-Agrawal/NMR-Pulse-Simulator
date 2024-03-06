@@ -2,6 +2,7 @@
 from PulseSequence import PulseSequence
 
 from Gate import *
+from DensityMatrix import DensityMatrix
 import matplotlib.pyplot as plt
 
 class Algorithm():
@@ -36,21 +37,25 @@ class Algorithm():
         print(f"{self._name} P2 matrix:")
         print(self._p2.compile().get_operator())
 
-
-    def print_net_density_matrix(self, correction=None):
+    def calculate_net_density_matrix(self, correction=None):
         if correction == None:
-            print(f"Resulting Density Matrix obtained after Temporal Averaging for {self._name} algorithm\n")
             correction = qt.Qobj(np.zeros(shape=(4,4)), dims=[[2,2], [2,2]])
-        else:
-            print(f"Resulting Density Matrix obtained after Temporal Averaging for {self._name} algorithm and matrix correction\n")
-
         p0_sim = self._p0.compile().evolve_pho_th()
         p1_sim = self._p1.compile().evolve_pho_th()
         p2_sim = self._p2.compile().evolve_pho_th()
 
         pho_net = (p0_sim.rho+p1_sim.rho+p2_sim.rho)/3
         pho_net = pho_net+correction
-        print(pho_net)
+        return DensityMatrix(pho_net)
+
+    def print_net_density_matrix(self, correction=None):
+        if correction == None:
+            print(f"Resulting Density Matrix obtained after Temporal Averaging for {self._name} algorithm\n")
+        else:
+            print(f"Resulting Density Matrix obtained after Temporal Averaging for {self._name} algorithm and matrix correction\n")
+
+        pho_net = self.calculate_net_density_matrix(correction)
+        print(pho_net.rho)
 
     def print_perm_density_matrices(self):
         print(f"{self._name} P0 matrix:")
@@ -114,7 +119,7 @@ class Algorithm():
         self._p2.print_sequence()
 
     def execute_algorithm(self, correction_matrix=None):
-        fig, axs = plt.subplots(2, 3, sharey="row", figsize=(10,8))
+        fig, axs = plt.subplots(2, 4, sharey="row", figsize=(10,8))
         # fig = plt.figure(figsize=(8, 6))
 
         p0_sim = self._p0.compile().evolve_pho_th()
@@ -166,13 +171,17 @@ class Algorithm():
         c_pk2 = np.round(c_pk2, 3)
 
 
-        self.print_net_density_matrix(correction_matrix)
+        pho_net = self.calculate_net_density_matrix(correction_matrix)
+        pho_net.plot_h_spectrum(axs[0,3])
+        pho_net.plot_c_spectrum(axs[1,3])
+        axs[0,2].set_title("Net-1H")
+        axs[1,2].set_title("Net-13C")
 
         # h_spectrum = f"H net spectrum: {h_pk1}, {h_pk2}"
         # c_spectrum = f"C net spectrum: {c_pk1}, {c_pk2}"
 
-        print(f"H net spectrum after adding integrals from P0, P1 and P2: {h_pk1}, {h_pk2}")
-        print(f"C net spectrum after adding integrals from P0, P1 and P2:: {c_pk1}, {c_pk2}")
+        # print(f"H net spectrum after adding integrals from P0, P1 and P2: {h_pk1}, {h_pk2}")
+        # print(f"C net spectrum after adding integrals from P0, P1 and P2:: {c_pk1}, {c_pk2}")
 
         # fig.suptitle(f"{self._name} \n {h_spectrum} \n {c_spectrum}")
         fig.suptitle(f"{self._name}")
