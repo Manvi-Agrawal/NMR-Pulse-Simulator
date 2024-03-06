@@ -174,8 +174,8 @@ class Algorithm():
         pho_net = self.calculate_net_density_matrix(correction_matrix)
         pho_net.plot_h_spectrum(axs[0,3])
         pho_net.plot_c_spectrum(axs[1,3])
-        axs[0,2].set_title("Net-1H")
-        axs[1,2].set_title("Net-13C")
+        axs[0,3].set_title("Net-1H")
+        axs[1,3].set_title("Net-13C")
 
         # h_spectrum = f"H net spectrum: {h_pk1}, {h_pk2}"
         # c_spectrum = f"C net spectrum: {c_pk1}, {c_pk2}"
