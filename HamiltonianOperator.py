@@ -7,11 +7,9 @@ I = qt.qeye(2)
 
 Ix = qt.tensor(x, I)
 Iy = qt.tensor(y, I)
-Iz = qt.tensor(z, I)
 
 Sx = qt.tensor(I, x)
 Sy = qt.tensor(I, y)
-Sz = qt.tensor(I, z)
 
 J = 215
 tJ = 1/(2*J)
