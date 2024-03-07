@@ -118,8 +118,15 @@ class Algorithm():
         print("\n")
         self._p2.print_sequence()
 
-    def execute_algorithm(self, correction_matrix=None):
+    def execute_algorithm(self, correction_matrix=None, invert_x = True):
         fig, axs = plt.subplots(2, 4, sharey="row", figsize=(10,8))
+        
+        if invert_x:
+            for i in range(0,2):
+                for j in range(0,4):
+                    axs[i, j].invert_xaxis()
+
+
         # fig = plt.figure(figsize=(8, 6))
 
         p0_sim = self._p0.compile().evolve_pho_th()

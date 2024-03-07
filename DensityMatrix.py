@@ -57,7 +57,7 @@ class DensityMatrix():
 
         y = y1+y2
 
-        plot = ax.plot(w, y, label=f"a1={alpha_pk1} \n a2={alpha_pk2}")
+        plot = ax.plot(w, y, label=f"{w0_pk1} ppm={alpha_pk1} \n {w0_pk2} ppm={alpha_pk2}")
         ax.legend()
         return plot
         # plt.show()
@@ -90,8 +90,9 @@ class DensityMatrix():
         y2= lorentian(w, w0_pk2, alpha_pk2, tau)
 
         y = y1+y2
+        plot = ax.plot(w, y, label=f"{w0_pk1} ppm={alpha_pk1} \n {w0_pk2} ppm={alpha_pk2}")
 
-        plot = ax.plot(w, y, label=f"a1={alpha_pk1}\n a2={alpha_pk2}")
+        # plot = ax.plot(w, y, label=f"a1={alpha_pk1}\n a2={alpha_pk2}")
         ax.legend()
         return plot
         # plt.show()
