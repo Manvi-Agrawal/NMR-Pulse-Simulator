@@ -41,11 +41,10 @@ class DensityMatrix():
     def h_pk2(self):
         return np.round(self._b-self._d, 2)
 
-        def __plot_spectrum(self, ax, param_dict, w, cf, J, B1, tau):
+    def __plot_spectrum(self, ax, w, cf, B1, alpha_pk1, alpha_pk2, J=215, tau=0.016):
         j = J/B1 # Divide by larmor freq to get ppm scale
         
         w0_pk1 = np.around(cf-j/2, 2)
-        alpha_pk1 = np.round(self._a-self._b, 2)
         y1= lorentian(w, w0_pk1, alpha_pk1, tau)
 
         w0_pk2 = np.around(cf+j/2, 2)
@@ -59,9 +58,9 @@ class DensityMatrix():
         ax.legend()
         return plot
     
-    def plot_h_spectrum(self, ax, param_dict=None, wh=6.46, J=215.0, tau=0.016):
+    def plot_h_spectrum(self, ax, param_dict=None, wh=6.46):
         w = np.linspace(0, 10, 1000)
-        return self.__plot_spectrum(ax, param_dict, w, cf=wh, J=J, B1=62.37, tau=tau)
+        return self.__plot_spectrum(ax, w, cf=wh, B1=62.37, alpha_pk1= self.c_pk1(), alpha_pk2=self.c_pk2())
 
 
     def c_spectrum(self, wc=73.331, J=215):
@@ -77,9 +76,10 @@ class DensityMatrix():
         return np.round(self._c-self._d, 2)
 
 
-    def plot_c_spectrum(self, ax, param_dict=None, wc=73.331, J=215.0, tau=0.016):
+    def plot_c_spectrum(self, ax, param_dict=None, wc=73.331):
         w = np.linspace(60, 90, 1000)
-        return self.__plot_spectrum(ax, param_dict, w, cf=wc, J=J, B1=15.68, tau=tau)
+        
+        return self.__plot_spectrum(ax, w, cf=wc, B1=15.68, alpha_pk1= self.c_pk1(), alpha_pk2=self.c_pk2())
 
 def main():
     rho = qt.Qobj(np.diag([1, 0.6, -1, -0.6]), dims=([[2, 2], [2, 2]]))
