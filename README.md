@@ -11,3 +11,4 @@ See the `examples` folder for more details. Here are some sample simulation resu
 ![](./plots/ta-00.png)
 
 
+> **NOTE:** These simulations are designed to account for quirky `Spinsolve` software that likes to display frequency scale from high to low and while showing integrals it shows low freq integral first and then high frequency :blush:
