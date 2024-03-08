@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import qutip as qt
 import numpy as np
-from Operator import Operator
+from .Operator import Operator
 
 class PulseSequence():
     def __init__(self, name) -> None:

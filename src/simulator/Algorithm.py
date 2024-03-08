@@ -1,8 +1,8 @@
 
-from PulseSequence import PulseSequence
+from .PulseSequence import PulseSequence
 
-from Gate import *
-from DensityMatrix import DensityMatrix
+from .Gate import *
+from .DensityMatrix import DensityMatrix
 import matplotlib.pyplot as plt
 
 class Algorithm():

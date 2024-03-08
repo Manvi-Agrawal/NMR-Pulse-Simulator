@@ -1,4 +1,4 @@
-from DensityMatrix import DensityMatrix
+from .DensityMatrix import DensityMatrix
 import qutip as qt
 import numpy as np
 

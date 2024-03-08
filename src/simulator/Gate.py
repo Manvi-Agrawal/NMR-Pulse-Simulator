@@ -1,7 +1,7 @@
-from Pulse import Pulse
+from .Pulse import Pulse
 import numpy as np
-from PulseSequence import PulseSequence
-from HamiltonianOperator import *
+from .PulseSequence import PulseSequence
+from .HamiltonianOperator import *
 
 X_i = Pulse("Ix(pi)", Ix, np.pi)
 

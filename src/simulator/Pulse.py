@@ -1,5 +1,5 @@
 from __future__ import annotations
-from Operator import Operator
+from .Operator import Operator
 
 class Pulse():
     def __init__(self, name, op, phase) -> None:
