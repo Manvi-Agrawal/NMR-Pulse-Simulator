@@ -48,7 +48,6 @@ class DensityMatrix():
         y1= lorentian(w, w0_pk1, alpha_pk1, tau)
 
         w0_pk2 = np.around(cf+j/2, 2)
-        alpha_pk2 = np.round(self._c-self._d, 2)
         y2= lorentian(w, w0_pk2, alpha_pk2, tau)
 
         y = y1+y2
@@ -60,7 +59,7 @@ class DensityMatrix():
     
     def plot_h_spectrum(self, ax, param_dict=None, wh=6.46):
         w = np.linspace(0, 10, 1000)
-        return self.__plot_spectrum(ax, w, cf=wh, B1=62.37, alpha_pk1= self.c_pk1(), alpha_pk2=self.c_pk2())
+        return self.__plot_spectrum(ax, w, cf=wh, B1=62.37, alpha_pk1= self.h_pk1(), alpha_pk2=self.h_pk2())
 
 
     def c_spectrum(self, wc=73.331, J=215):
