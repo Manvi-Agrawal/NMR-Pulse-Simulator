@@ -5,7 +5,9 @@ from .Gate import *
 from .DensityMatrix import DensityMatrix
 import matplotlib.pyplot as plt
 
-class Algorithm():
+class Algorithm(object):
+    invert_x = True
+
     def __init__(self, name):
         self._name = name
 
@@ -118,10 +120,10 @@ class Algorithm():
         print("\n")
         self._p2.print_sequence()
 
-    def execute_algorithm(self, correction_matrix=None, invert_x = True):
+    def execute_algorithm(self, correction_matrix=None):
         fig, axs = plt.subplots(2, 4, sharey="row", figsize=(10,8))
         
-        if invert_x:
+        if Algorithm.invert_x:
             for i in range(0,2):
                 for j in range(0,4):
                     axs[i, j].invert_xaxis()
@@ -202,7 +204,8 @@ class Algorithm():
 
 def main():
     print("start")
-    ta = Algorithm("Tempoaral Averaging -- |00>")
+    Algorithm.invert_x = False
+    ta = Algorithm("Temporal Averaging -- |00>")
     ta.state_prep("00")
    
 
