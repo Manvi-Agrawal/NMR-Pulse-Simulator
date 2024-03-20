@@ -6,6 +6,7 @@ See the `examples` folder for more details. Here are some sample simulation resu
 
 ## CNOT gate
 ![](./plots/cnot.png)
+![](./plots/cnot_truth_table.png)
 
 ## Prepare $|00\rangle$ by Temporal Averaging
 ![](./plots/ta-00.png)
